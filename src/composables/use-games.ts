@@ -12,7 +12,7 @@ export default function useGames() {
   console.log('url', URL_PREFIX);
   const fetchGames = async (id: string) => {
     await axios
-      .get(URL_PREFIX + 'get-games?id=' + id)
+      .get(URL_PREFIX + 'api/get-games?id=' + id)
       .then((res) => {
         state.response = res.data;
         state.loading = true;
