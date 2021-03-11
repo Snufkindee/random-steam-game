@@ -8,7 +8,7 @@ export const state = reactive({
 });
 
 export default function useGames() {
-  const URL_PREFIX = import.meta.env.VITE_API_URL;
+  const URL_PREFIX = import.meta.env.API_URL;
   const fetchGames = async (id: string) => {
     await axios
       .get(URL_PREFIX + 'get-games?id=' + id)
