@@ -11,7 +11,7 @@ export default function useGames() {
   const URL_PREFIX = import.meta.env.VITE_API_URL;
   const fetchGames = async (id: string) => {
     await axios
-      .get(URL_PREFIX + '/api/get-games?id=' + id)
+      .get(URL_PREFIX + 'api/get-games?id=' + id)
       .then((res) => {
         state.response = res.data;
         state.loading = true;
