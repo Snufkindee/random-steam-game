@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-image"></div>
+  <img class="bg-image" v-lazy="img" />
   <RandomPage />
 </template>
 
@@ -16,10 +16,16 @@ export default defineComponent({
     Input,
     RandomPage,
   },
+  setup() {
+    const img =
+      'https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260';
+
+    return { img };
+  },
 });
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300;1,400;1,700&display=swap');
 
 *,
@@ -35,19 +41,22 @@ export default defineComponent({
   background: transparent;
 }
 
+html,
+body {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .bg-image {
-  background-image: url('./assets/bg.jpg');
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  left: 0;
-  right: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  display: block;
-  filter: blur(5px);
+  filter: blur(7px);
   transform: scale(1.1);
 }
 </style>
