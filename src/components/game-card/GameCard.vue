@@ -2,17 +2,21 @@
   <div class="container">
     <h1 class="title">Pick a random game from your Steam library</h1>
     <div
-      v-if="gameList.length <= 0 && !randomIndex"
+      v-if="gameList.length <= 0 && !randomIndex && !loading"
       class="img-placeholder"
     ></div>
+    <Spinner />
     <img
       class="image"
-      v-if="gameList && randomIndex !== null"
+      v-if="gameList && randomIndex !== null && !loading"
       v-bind:src="gameList[randomIndex].logoURL"
+      :alt="gameList[randomIndex].name"
     />
-    <span class="game-name" v-if="gameList && randomIndex !== null">{{
-      gameList[randomIndex].name
-    }}</span>
+    <span
+      class="game-name"
+      v-if="gameList && randomIndex !== null && !loading"
+      >{{ gameList[randomIndex].name }}</span
+    >
   </div>
 </template>
 
@@ -21,9 +25,11 @@ import { Ref, ref, watchEffect } from 'vue';
 import useGames from '../../composables/use-games';
 import Game from '../../types/Game';
 import { inputText } from '../../composables/use-input';
+import Spinner from '../spinner/Spinner.vue';
 
 export default {
   name: 'GameCard',
+  components: { Spinner },
   setup() {
     const { response, error, loading } = useGames();
     const gameList: Ref<Game[]> = ref(response);
@@ -62,15 +68,22 @@ export default {
   font-style: italic;
   margin-bottom: 40px;
   text-align: center;
+  color: #66fcf1;
 }
 
 .img-placeholder {
-  height: 69px;
-  width: 184px;
-  border: 3px dashed rgb(37, 37, 37);
+  height: 100px;
+  width: 250px;
+  border: 3px dashed #45a29e;
+}
+
+img {
+  height: 100px;
+  width: 250px;
 }
 
 .game-name {
   margin-top: 20px;
+  color: white;
 }
 </style>

@@ -10,7 +10,7 @@ export default {
 
 <style scoped>
 .button {
-  background-color: #e27d60;
+  background: transparent;
   height: 40px;
   width: 100px;
   border-radius: 4px;
@@ -18,9 +18,11 @@ export default {
   color: white;
   text-align: center;
   transition: 0.5s;
+  border: 2px solid #66fcf1;
 }
 
 .button:hover {
-  background-color: #da6241;
+  background-color: #45a29e;
+  border-color: #45a29e;
 }
 </style>

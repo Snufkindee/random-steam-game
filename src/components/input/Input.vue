@@ -22,14 +22,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .input {
-  height: 40px;
+  max-height: 40px;
   width: 400px;
   min-width: 30px;
-  border: 2px solid rgb(37, 37, 37);
+  border: 2px solid #66fcf1;
   border-radius: 4px;
   padding: 10px;
-  color: rgb(37, 37, 37);
+  color: white;
+  background: transparent;
+
+  @media only screen and (max-width: 420px) {
+    width: 250px;
+  }
+}
+
+input::placeholder {
+  color: #45a29e;
 }
 </style>
